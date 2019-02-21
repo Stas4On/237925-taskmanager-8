@@ -4,37 +4,30 @@ const filters = [
   {
     name: `all`,
     number: 15,
-    isChecked: true,
   },
   {
     name: `overdue`,
     number: 0,
-    isChecked: false,
   },
   {
     name: `today`,
     number: 0,
-    isChecked: false,
   },
   {
     name: `favorites`,
     number: 7,
-    isChecked: false,
   },
   {
     name: `repeating`,
     number: 2,
-    isChecked: false,
   },
   {
     name: `tags`,
     number: 10,
-    isChecked: false,
   },
   {
     name: `archive`,
     number: 4,
-    isChecked: false,
   },
 ];
 
@@ -56,10 +49,6 @@ const makeFilter = (filter) => {
   input.type = `radio`;
   input.name = `filter`;
 
-  if (filter.isChecked) {
-    input.checked = true;
-  }
-
   if (filter.number === 0) {
     input.disabled = true;
   }
@@ -75,6 +64,11 @@ const makeFilter = (filter) => {
 
 for (let i = 0; i < filters.length; i++) {
   const filterElement = makeFilter(filters[i]);
+
+  if (i === 0) {
+    filterElement.input.checked = true;
+  }
+
   filterContainer.appendChild(filterElement.input);
   filterContainer.appendChild(filterElement.label);
 }
