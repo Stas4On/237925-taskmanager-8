@@ -3,33 +3,32 @@
 const filters = [
   {
     name: `all`,
-    number: 15,
   },
   {
     name: `overdue`,
-    number: 0,
   },
   {
     name: `today`,
-    number: 0,
   },
   {
     name: `favorites`,
-    number: 7,
   },
   {
     name: `repeating`,
-    number: 2,
   },
   {
     name: `tags`,
-    number: 10,
   },
   {
     name: `archive`,
-    number: 4,
   },
 ];
+
+const beginCounter = 7;
+const minValueCounter = 1;
+const maxValueCounter = 20; // Не включая
+
+const getRandom = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const filterContainer = document.querySelector(`.main__filter`);
 
@@ -56,7 +55,7 @@ const makeFilter = (filter) => {
   const label = makeElement(`label`, `filter__label`, `${filter.name} `);
   label.setAttribute(`for`, `filter__${filter.name}`);
 
-  const count = makeElement(`span`, `filter__${filter.name}-count`, filter.number);
+  const count = makeElement(`span`, `filter__${filter.name}-count`, getRandom(minValueCounter, maxValueCounter));
   label.appendChild(count);
 
   return {input, label};
@@ -373,7 +372,7 @@ const renderCard = (dist, count) => {
 
 const cardsContainer = document.querySelector(`.board__tasks`);
 
-renderCard(cardsContainer, 7);
+renderCard(cardsContainer, beginCounter);
 
 const filterList = document.querySelectorAll(`.filter__label`);
 
