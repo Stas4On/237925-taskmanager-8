@@ -1,4 +1,5 @@
 export default (filters) => {
+  const filterElements = [];
   for (let i = 0; i < filters.length; i++) {
     const filterElement = makeFilter(filters[i]);
 
@@ -6,9 +7,11 @@ export default (filters) => {
       filterElement.input.checked = true;
     }
 
-    filterContainer.appendChild(filterElement.input);
-    filterContainer.appendChild(filterElement.label);
+    filterElements.push(filterElement.input);
+    filterElements.push(filterElement.label);
   }
+
+  return filterElements;
 };
 
 const MIN_VALUE_COUNTER = 1;
@@ -24,8 +27,6 @@ const makeElement = (tagName, className, text) => {
   }
   return element;
 };
-
-const filterContainer = document.querySelector(`.main__filter`);
 
 const makeFilter = (filter) => {
   const input = makeElement(`input`, `filter__input`);

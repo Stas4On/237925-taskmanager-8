@@ -25,7 +25,12 @@ const filters = [
   },
 ];
 
-makeFilter(filters);
+const filterContainer = document.querySelector(`.main__filter`);
+const filterElements = makeFilter(filters);
+
+for (const filter of filterElements) {
+  filterContainer.insertAdjacentElement(`beforeend`, filter);
+}
 
 const BEGIN_COUNTER = 7;
 
