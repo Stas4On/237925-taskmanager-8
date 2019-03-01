@@ -1,6 +1,8 @@
 import makeFilter from '../src/make-filter';
 import makeCard from '../src/make-card';
 
+const BEGIN_COUNTER = 7;
+
 const filters = [
   {
     name: `all`,
@@ -31,8 +33,6 @@ const filterElements = makeFilter(filters);
 for (const filter of filterElements) {
   filterContainer.insertAdjacentElement(`beforeend`, filter);
 }
-
-const BEGIN_COUNTER = 7;
 
 const renderCard = (dist, count) => {
   const tasks = new Array(count)
